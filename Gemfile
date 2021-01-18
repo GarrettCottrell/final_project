@@ -45,7 +45,10 @@ gem 'faraday'
 gem 'figaro'
 
 group :test do
-gem 'capybara'
-gem 'rspec-rails'
-gem 'simplecov'
+  gem 'capybara'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'simplecov'
+  gem 'vcr'
+  gem 'webmock'
 end
