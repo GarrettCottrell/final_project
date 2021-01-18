@@ -5,6 +5,7 @@ module Api
     class UserController < ApplicationController
       def create
         user_info = JSON.parse(request.body.read, symbolize_names: true)
+
         user = User.new(user_info)
         if user.save
           render :status => '201', :json => UserSerializer.new(user)
