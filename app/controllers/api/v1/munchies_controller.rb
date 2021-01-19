@@ -4,12 +4,11 @@ module Api
   module V1
     class MunchiesController < ApplicationController
       def index
-        conn = Faraday.new(
-          url: 'https://www.mapquestapi.com/directions/v2/',
-          params: { key: ENV['CONSUMER_KEY'] }
-        )
-         response = conn.get("route?from=#{params[:start]}&to=#{params[:end]}")
-         json = JSON.parse(response.body, symbolize_names: true)
+        mapquest = MapquestFacade.map_quest(params[:start], params[:end])
+       require 'pry'; binding.pry
+
+
+
 
         conn = Faraday.new('https://api.yelp.com') do |f|
           f.headers['Authorization'] = ENV['YELP_API_KEY']
@@ -27,7 +26,7 @@ module Api
         )
         response = conn.get("?q=#{params[:end]}&units=imperial")
         json = JSON.parse(response.body, symbolize_names: true)
-        require 'pry'; binding.pry
+        
       end
     end
   end
