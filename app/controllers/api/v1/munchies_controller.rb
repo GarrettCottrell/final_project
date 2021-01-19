@@ -9,7 +9,18 @@ module Api
           params: { key: ENV['CONSUMER_KEY'] }
         )
          response = conn.get("route?from=#{params[:start]}&to=#{params[:end]}")
-         require 'pry'; binding.pry
+         json = JSON.parse(response.body, symbolize_names: true)
+
+        conn = Faraday.new('https://api.yelp.com') do |f|
+          f.headers['Authorization'] = ENV['YELP_API_KEY']
+        end
+  
+        response = conn.get('/v3/businesses/search?') do |f|
+          f.params[:location] = params[:end]
+          f.params[:categories] = params[:food]
+        end
+        json = JSON.parse(response.body, symbolize_names: true)
+        
       end
     end
   end
