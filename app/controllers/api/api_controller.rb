@@ -2,21 +2,20 @@
 
 module Api
   class ApiController < ApplicationController
-  before_action :authenticate
+    before_action :authenticate
 
-  protected
+    protected
 
-  def authenticate
-    api_key_data = JSON.parse(request.body.read, symbolize_names: true)
+    def authenticate
+      api_key_data = JSON.parse(request.body.read, symbolize_names: true)
 
-    api_key = api_key_data[:api_key]
+      api_key = api_key_data[:api_key]
 
-    @user = User.find_by(api_key: api_key) if api_key
+      @user = User.find_by(api_key: api_key) if api_key
 
-    unless @user
+      return if @user
+
       render json: { status: :unauthorized }, status: :unauthorized
-      return false
-      end
     end
   end
 end

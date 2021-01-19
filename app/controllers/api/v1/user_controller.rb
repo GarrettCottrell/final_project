@@ -10,7 +10,7 @@ module Api
         if user.save
           render :status => '201', :json => UserSerializer.new(user)
         else
-          render json: { status: :bad_request, errors: user.errors.full_messages.uniq }, status: :bad_request
+          render json: { errors: user.errors.full_messages.uniq }, status: :bad_request
         end
       end
     end
