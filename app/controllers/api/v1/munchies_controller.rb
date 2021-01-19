@@ -7,10 +7,14 @@ module Api
         mapquest = MapquestFacade.map_quest(params[:start], params[:end])
 
         yelp = YelpFacade.yelp(params[:end], params[:food])
-
+       
         openweather = OpenweatherFacade.open_weather(params[:end])
         
-        render json: MunchieSerializer.new(mapquest, yelp, openweather)
+        render json: {
+          directions: MapquestSerializer.new(mapquest),
+          restaurant: YelpSerializer.new(yelp),
+          forecast: WeatherSerializer.new(openweather)
+        } 
       end
     end
   end
