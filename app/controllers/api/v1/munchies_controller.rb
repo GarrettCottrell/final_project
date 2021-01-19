@@ -9,7 +9,8 @@ module Api
         yelp = YelpFacade.yelp(params[:end], params[:food])
 
         openweather = OpenweatherFacade.open_weather(params[:end])
-        require 'pry'; binding.pry
+        
+        render json: MunchieSerializer.new(mapquest, yelp, openweather)
       end
     end
   end
