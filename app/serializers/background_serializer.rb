@@ -7,5 +7,5 @@ class BackgroundSerializer
 
   set_id { nil }
 
-  attributes :image_url
+  attributes :image_url, :location, :credit
 end

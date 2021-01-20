@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ForecastSerializer
+class WeatherSerializer
   include FastJsonapi::ObjectSerializer
 
   set_type :forecast
