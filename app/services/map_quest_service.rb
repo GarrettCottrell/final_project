@@ -18,6 +18,7 @@ class MapQuestService
   end
 
   def self.road_trip(data)
+
     response = conn.get("/directions/v2/route?") do |req|
       req.params['from'] = data[:origin]
       req.params['to'] = data[:destination]

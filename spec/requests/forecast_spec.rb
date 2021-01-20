@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Forecast endpoint' do
-  it 'Forecast endpoint returns json', :vcr do
+  it 'Forecast endpoint returns json' do
     get '/api/v1/forecast?location=Denver,CO'
 
     forecast = JSON.parse(response.body, symbolize_names: true)
