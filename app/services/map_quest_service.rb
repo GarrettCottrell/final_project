@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CoordinatesService
+class MapQuestService
   def self.conn
     Faraday.new(
       url: 'http://www.mapquestapi.com',
@@ -15,5 +15,13 @@ class CoordinatesService
     json = JSON.parse(response.body, symbolize_names: true)
    
     json[:results][0][:locations][0]
+  end
+
+  def self.road_trip(data)
+    response = conn.get("/directions/v2/route?") do |req|
+      req.params['from'] = data[:origin]
+      req.params['to'] = data[:destination]
+    end
+    json = JSON.parse(response.body, symbolize_names: true)
   end
 end
