@@ -3,10 +3,18 @@
 class Weather
   attr_reader :current_weather, :daily_weather, :hourly_weather
 
-  def initialize(data)
+  def initialize(weather_data)
+ 
+    @current_weather = weather_data[:current]
+    @daily_weather = weather_data[:daily]
+    @hourly_weather = weather_data[:hourly]
+  end
 
-    @current_weather = data[:current]
-    @daily_weather = data[:daily]
-    @hourly_weather = data[:hourly]
+  def weather_at_eta
+    @hourly_weather.map do |hourly|
+      Time.at(hourly[:dt])
+    end
+   
+    @hourly_weather
   end
 end
