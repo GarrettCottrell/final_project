@@ -24,7 +24,7 @@ describe 'Road trip endpoint' do
     expect(road_trip[:data][:attributes][:start_city]).to eq('Denver,CO')
     expect(road_trip[:data][:attributes][:end_city]).to be_a(String)
     expect(road_trip[:data][:attributes][:end_city]).to eq('Pueblo,CO')
-    expect(road_trip[:data][:attributes][:travel_time_pretty]).to be_a(String)
-    expect(road_trip[:data][:attributes][:arrival_time]).to be_a(String)
+    expect(road_trip[:data][:attributes][:travel_time]).to be_a(String)
+    expect(road_trip[:data][:attributes][:weather_at_eta]).to be_a(Hash)
   end
 end

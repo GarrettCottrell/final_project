@@ -9,11 +9,11 @@ class RoadTrip
     @end_city = data[:destination]
 
     if weather_service_data && road_trip_data != nil
-    @travel_time = road_trip_data[:route][:formattedTime]
-    @travel_time_functional = road_trip_data[:route][:realTime]
-    @hour = @travel_time_functional/3600.0
-    @weather_service_data = weather_service_data
-    @road_trip_data = road_trip_data
+      @travel_time = road_trip_data[:route][:formattedTime]
+      @travel_time_functional = road_trip_data[:route][:realTime]
+      @hour = @travel_time_functional/3600.0
+      @weather_service_data = weather_service_data
+      @road_trip_data = road_trip_data
     else
       @start_city = data[:origin]
       @end_city = data[:destination]

@@ -23,9 +23,9 @@ describe 'Travel' do
 
 
    data = {:origin=>"Denver,CO", :destination=>"Pueblo,CO", :api_key=>"zCav77t7aRYoRroXRppG1Uaj"}
-    travel = Travel.new(road_trip_data, data)
+    travel = RoadTrip.new(road_trip_data, data)
 
-    expect(travel.travel_time_pretty).to eq('01:44:22')
+    expect(travel.travel_time).to eq('01:44:22')
     expect(travel.travel_time_functional).to eq(7066)
     expect(travel.end_city).to eq('Pueblo,CO')
     expect(travel.start_city).to eq('Denver,CO')
