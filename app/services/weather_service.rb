@@ -13,6 +13,7 @@ class WeatherService
       req.params['lat'] = latitude
       req.params['lon'] = longitude
       req.params['exclude'] = 'alerts'
+      req.params['units'] = 'imperial'
     end
 
     JSON.parse(response.body, symbolize_names: true)
