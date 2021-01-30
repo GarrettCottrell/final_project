@@ -12,10 +12,10 @@ describe 'Forecast endpoint' do
     expect(forecast[:data][:attributes][:current_weather]).to have_key(:sunrise)
 
     expect(forecast[:data][:attributes][:hourly_weather]).to be_an(Array)
-    expect(forecast[:data][:attributes][:hourly_weather][0]).to have_key(:temp)
+    expect(forecast[:data][:attributes][:hourly_weather][0]).to have_key(:temperature)
 
     expect(forecast[:data][:attributes][:daily_weather]).to be_an(Array)
-    expect(forecast[:data][:attributes][:daily_weather][0]).to have_key(:wind_speed)
+    expect(forecast[:data][:attributes][:daily_weather][0]).to have_key(:conditions)
 
     expect(forecast[:data][:attributes]).to_not have_key(:minutely)
     expect(forecast[:data][:attributes]).to_not have_key(:alerts)

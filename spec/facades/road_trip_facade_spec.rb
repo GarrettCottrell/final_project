@@ -8,7 +8,7 @@ describe 'road trip facade' do
     expect(road_trip.end_city).to eq('Pueblo,CO')
     expect(road_trip.start_city).to eq('Denver,CO')
     expect(road_trip.travel_time_functional).to be_an(Integer)
-    expect(road_trip.travel_time_pretty).to be_a(String)
-    expect(road_trip.travel_time_pretty).to eq('01:44:22')
+    expect(road_trip.travel_time).to be_a(String)
+    expect(road_trip.travel_time).to eq('01:44:22')
   end
 end

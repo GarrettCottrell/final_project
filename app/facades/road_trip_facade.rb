@@ -2,13 +2,15 @@
 
 class RoadTripFacade
   def self.road_trip(data)
-    to_and_from = MapQuestService.road_trip(data)
-    road_trip_object = Travel.new(to_and_from, data)
+    road_trip_service_data = MapQuestService.road_trip(data)
 
-    # coordinate_data = MapQuestService.coordinates(road_trip_object.end_city)
-    # coordinates = Coordinates.new(coordinate_data)
+    if road_trip_service_data[:route][:routeError] != {:errorCode=>2, :message=>""}
 
-    # weather_data = WeatherService.destination_weather(coordinates.latitude, coordinates.longitude)
-    # weather_object = Weather.new(weather_data)
+      coordinates_data = MapQuestService.coordinates(data[:destination])
+      weather_service_data = WeatherService.weather(coordinates_data[:latLng][:lat], coordinates_data[:latLng][:lng])
+      RoadTrip.new(data, road_trip_service_data, weather_service_data)
+    else
+      RoadTrip.new(data)
+    end
   end
 end
